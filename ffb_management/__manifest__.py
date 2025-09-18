@@ -6,7 +6,7 @@
     'author': 'Pangeran - Generated',
     'license': 'LGPL-3',
     'category': 'Operations/Inventory',
-    'depends': ['base', 'sale_management', 'account', 'fleet', 'product', 'sale'],
+    'depends': ['base', 'fleet', 'sale_management', 'account', 'product', 'sale'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
@@ -22,7 +22,7 @@
         'data/cron_jobs.xml',
         ],
     'demo': [
-        'data/demo_data.xml',
+        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': True,

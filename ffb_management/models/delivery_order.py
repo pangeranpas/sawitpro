@@ -6,6 +6,7 @@ class SawitDeliveryOrder(models.Model):
     _name = 'sawitpro.delivery.order'
     _description = 'FFB Delivery Order'
     _order = 'scheduled_date desc, id'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
     name = fields.Char(string='Delivery Order', required=True, copy=False, readonly=True, default=lambda self: 'New')
