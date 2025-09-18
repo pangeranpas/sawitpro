@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_sawit_dashboard_action" model="ir.actions.act_window">
+    <field name="name">FFB Dashboard</field>
+    <field name="res_model">sawitpro.daily.summary</field>
+    <field name="view_mode">graph,kanban,list</field>
+  </record>
+
+  <menuitem id="menu_sawit_dashboard" name="Dashboard" parent="menu_sawit_operations" action="view_sawit_dashboard_action" groups="base.group_user"/>
+</odoo>

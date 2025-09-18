@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Groups -->
+  <record id="group_sawitpro_operations_coordinator" model="res.groups">
+    <field name="name">SawitPRO / Operations Coordinator</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <record id="group_sawitpro_operations_manager" model="res.groups">
+    <field name="name">SawitPRO / Operations Manager</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <record id="group_sawitpro_sales_coordinator" model="res.groups">
+    <field name="name">SawitPRO / Sales Coordinator</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <record id="group_sawitpro_admin" model="res.groups">
+    <field name="name">SawitPRO / Admin</field>
+    <field name="category_id" ref="base.module_category_hidden"/>
+  </record>
+
+  <!-- Record Rules: (simple examples) -->
+  <!-- Operations Coordinator: read/write on Delivery + Weighbridge (no delete) -->
+  <record id="rule_operations_coordinator_delivery_order" model="ir.rule">
+    <field name="name">Operations Coordinator Delivery Orders</field>
+    <field name="model_id" ref="model_sawitpro_delivery_order"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_operations_coordinator'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+
+  <record id="rule_operations_coordinator_weighbridge" model="ir.rule">
+    <field name="name">Operations Coordinator Weighbridge</field>
+    <field name="model_id" ref="model_sawitpro_weighbridge"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_operations_coordinator'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+
+  <!-- Operations Manager: full access on operations models -->
+  <record id="rule_operations_manager_delivery_order" model="ir.rule">
+    <field name="name">Operations Manager Delivery Orders</field>
+    <field name="model_id" ref="model_sawitpro_delivery_order"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_operations_manager'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+
+  <record id="rule_operations_manager_all" model="ir.rule">
+    <field name="name">Operations Manager All</field>
+    <field name="model_id" ref="model_sawitpro_daily_summary"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_operations_manager'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+
+  <!-- Sales Coordinator: limited access to daily summaries and price management -->
+  <record id="rule_sales_coordinator_summary" model="ir.rule">
+    <field name="name">Sales Coordinator Daily Summary</field>
+    <field name="model_id" ref="model_sawitpro_daily_summary"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_sales_coordinator'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+
+  <record id="rule_sales_coordinator_ffb_price" model="ir.rule">
+    <field name="name">Sales Coordinator FFB Price</field>
+    <field name="model_id" ref="model_sawitpro_ffb_price"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_sales_coordinator'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+
+  <!-- Admin: full access (system administrators only) -->
+  <record id="rule_sawitpro_admin_full" model="ir.rule">
+    <field name="name">SawitPRO Admin Full</field>
+    <field name="model_id" ref="model_sawitpro_delivery_order"/>
+    <field name="global" eval="False"/>
+    <field name="groups" eval="[(4, ref('group_sawitpro_admin'))]"/>
+    <field name="domain_force">[(1,'=',1)]</field>
+  </record>
+</odoo>

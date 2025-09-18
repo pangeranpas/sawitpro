@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="seq_delivery_order" model="ir.sequence">
+    <field name="name">Delivery Order</field>
+    <field name="code">sawitpro.delivery.order</field>
+    <field name="padding">6</field>
+    <field name="prefix">DO/</field>
+  </record>
+  <record id="seq_weighbridge" model="ir.sequence">
+    <field name="name">Weighbridge</field>
+    <field name="code">sawitpro.weighbridge</field>
+    <field name="padding">6</field>
+    <field name="prefix">WB/</field>
+  </record>
+  <record id="seq_trip" model="ir.sequence">
+    <field name="name">Trip</field>
+    <field name="code">sawitpro.trip</field>
+    <field name="padding">4</field>
+    <field name="prefix">TR/</field>
+  </record>
+</odoo>
