@@ -3,7 +3,7 @@
     'name': 'SawitPRO FFB Management',
     'summary': 'Manage FFB deliveries, weighbridge receipts, daily summaries and sales',
     'version': '1.0.0',
-    'author': 'Pangeran - Generated',
+    'author': 'Pangeran Christian',
     'license': 'LGPL-3',
     'category': 'Operations/Inventory',
     'depends': ['base', 'fleet', 'sale_management', 'account', 'product', 'sale'],
