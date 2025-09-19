@@ -37,7 +37,6 @@ class SawitBulkImport(models.TransientModel):
                 }
                 do = delivery_obj.create(do_vals)
                 created_orders.append(do.id)
-                # create weighbridge if present
                 if row.get('gross_kg') or row.get('tare_kg'):
                     w_vals = {
                         'delivery_order_id': do.id,

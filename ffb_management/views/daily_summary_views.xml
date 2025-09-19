@@ -24,6 +24,7 @@
             <field name="mill_id"/>
             <field name="fleet_id"/>
             <field name="total_net_kg" readonly="1"/>
+            <field name="sale_order_id"/>
           </group>
           <group>
             <field name="delivery_order_ids">

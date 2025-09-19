@@ -25,3 +25,6 @@ access_sawitpro_trip_user,sawitpro.trip.user,model_sawitpro_trip,base.group_user
 access_sawitpro_daily_summary_user,sawitpro.daily.summary.user,model_sawitpro_daily_summary,base.group_user,1,1,1,1
 access_sawitpro_ffb_price_user,sawitpro.ffb.price.user,model_sawitpro_ffb_price,base.group_user,1,1,1,1
 access_sawitpro_sale_integration_user,sawitpro.sale.integration.user,model_sawitpro_sale_integration,base.group_user,1,1,1,1
+
+access_sawitpro_bulk_import,sawitpro.bulk.import,model_sawitpro_bulk_import,base.group_user,1,1,1,1
+access_sawitpro_create_sales_wizard,sawitpro.create.sales.wizard,model_sawitpro_create_sales_wizard,base.group_user,1,1,1,1

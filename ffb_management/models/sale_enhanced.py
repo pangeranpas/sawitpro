@@ -13,7 +13,7 @@ class SaleOrder(models.Model):
             "res_model": "sawitpro.daily.summary",  # ganti jika model Anda beda
             "view_mode": "list,form",
             # contoh domain jika ada relasi Many2one sale_order_id di summary:
-            # "domain": [("sale_order_id", "=", self.id)],
-            "domain": [],
+            "domain": [("sale_order_id", "=", self.id)],
+            # "domain": [],
             "target": "current",
         }

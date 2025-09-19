@@ -1,40 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+  <!-- ================= Bulk Import Wizard ================= -->
   <record id="view_sawit_bulk_import_wizard" model="ir.ui.view">
-    <field name="name">sawit.bulk.import.wizard</field>
-    <field name="model">sawitpro.bulk.import</field>
-    <field name="arch" type="xml">
-      <form string="Bulk Import Delivery Orders">
-        <sheet>
-          <group>
-            <field name="file" filename="filename" widget="binary"/>
-            <field name="filename"/>
-          </group>
-          <footer>
-            <button string="Import" type="object" name="action_import" class="btn-primary"/>
-            <button string="Cancel" class="btn-default" special="cancel"/>
-          </footer>
-        </sheet>
-      </form>
-    </field>
+      <field name="name">sawit.bulk.import.wizard</field>
+      <field name="model">sawitpro.bulk.import</field>
+      <field name="arch" type="xml">
+          <form string="Bulk Import Delivery Orders">
+              <sheet>
+                  <group>
+                      <field name="file" filename="filename" widget="binary"/>
+                      <field name="filename"/>
+                  </group>
+                  <footer>
+                      <button string="Import" type="object" name="action_import" class="btn-primary"/>
+                      <button string="Cancel" class="btn-secondary" special="cancel"/>
+                  </footer>
+              </sheet>
+          </form>
+      </field>
   </record>
 
-  <record id="view_create_sales_from_summary_wizard" model="ir.ui.view">
-    <field name="name">sawit.create.sales.wizard</field>
-    <field name="model">sawitpro.create.sales.wizard</field>
-    <field name="arch" type="xml">
-      <form string="Create Sales from Summaries">
-        <sheet>
-          <group>
-            <field name="summary_ids" widget="many2many_tags"/>
-            <field name="partner_id"/>
-          </group>
-          <footer>
-            <button string="Create Sales" type="object" name="action_create_sales" class="btn-primary"/>
-            <button string="Cancel" class="btn-default" special="cancel"/>
-          </footer>
-        </sheet>
-      </form>
-    </field>
+  <record id="action_sawit_bulk_import_wizard" model="ir.actions.act_window">
+      <field name="name">Bulk Import</field>
+      <field name="res_model">sawitpro.bulk.import</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_sawit_bulk_import_wizard"/>
+      <field name="target">new</field>
   </record>
+
+  <!-- ================= Create Sales from Summaries Wizard ================= -->
+  <record id="view_create_sales_from_summary_wizard" model="ir.ui.view">
+      <field name="name">sawit.create.sales.wizard</field>
+      <field name="model">sawitpro.create.sales.wizard</field>
+      <field name="arch" type="xml">
+          <form string="Create Sales from Summaries">
+              <sheet>
+                  <group>
+                      <field name="summary_ids" widget="many2many_tags"/>
+                      <field name="partner_id"/>
+                  </group>
+                  <footer>
+                      <button string="Create Sales" type="object" name="action_create_sales" class="btn-primary"/>
+                      <button string="Cancel" class="btn-secondary" special="cancel"/>
+                  </footer>
+              </sheet>
+          </form>
+      </field>
+  </record>
+
+  <record id="action_create_sales_from_summary_wizard" model="ir.actions.act_window">
+      <field name="name">Create Sales from Summaries</field>
+      <field name="res_model">sawitpro.create.sales.wizard</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_create_sales_from_summary_wizard"/>
+      <field name="target">new</field>
+  </record>
+
+  <!-- ================= Menus ================= -->
+  <!-- Pastikan menu_sawit_operations sudah ada, atau ganti ke menu lain -->
+  <menuitem id="menu_sawit_bulk_import_wizard"
+            name="Bulk Import"
+            parent="menu_sawit_operations"
+            action="action_sawit_bulk_import_wizard"
+            groups="base.group_user"/>
+
+  <menuitem id="menu_create_sales_from_summary"
+            name="Create Sales from Summaries"
+            parent="menu_sawit_operations"
+            action="action_create_sales_from_summary_wizard"
+            groups="base.group_user"/>
 </odoo>
