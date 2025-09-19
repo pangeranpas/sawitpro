@@ -7,9 +7,7 @@ class SawitSaleIntegration(models.Model):
     _name = 'sawitpro.sale.integration'
     _description = 'Sale Integration Helper (Transient)'
 
-
     name = fields.Char('Name')
-
 
     def create_sale_from_summaries(self, summary_ids, partner_id=None):
         Sale = self.env['sale.order']

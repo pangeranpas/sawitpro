@@ -39,17 +39,12 @@ class SawitDailySummary(models.Model):
         dt_date = date if isinstance(date, datetime.date) else fields.Date.from_string(date)
         start = datetime.datetime.combine(dt_date, datetime.time.min)
         end = datetime.datetime.combine(dt_date, datetime.time.max)
-        print(start, end)
         dom = [
             ('state', 'in', ('delivered', 'confirmed')),
             ('scheduled_date', '>=', start),
             ('scheduled_date', '<=', end)
         ]
         orders = self.env['sawitpro.delivery.order'].search(dom)
-        for o in orders:
-            print(o.name)
-        print('Found orders:', orders)
-        # Group by mill (vendor's parent as mill) and fleet
         groups = {}
         for o in orders:
             mill = o.vendor_id.parent_id or o.vendor_id
@@ -73,5 +68,4 @@ class SawitDailySummary(models.Model):
             else:
                 summary.delivery_order_ids = [(6, 0, list(set(summary.delivery_order_ids.ids + order_ids)))]
             created.append(summary)
-        print('Created %s daily summaries' % len(created))
         return created
